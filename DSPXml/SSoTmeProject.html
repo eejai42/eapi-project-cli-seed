@@ -40,7 +40,8 @@ body {
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/json-to-xml -i .\Entities.json</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/DataClasses/>
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">odxml42/odxml-to-csharp-pocos -i ..\..\..\ODXML\DataSchema.odxml -p airtable=true</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/SSoT/>
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/csv-to-xml -i .\CommandLineArgs.csv</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/>
-            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">XmlToPlossumCmdLineOptions -i ..\..\SSoT\CommandLineArgs.csv.xml</div></div><h2>Input Files</h2><div><h3>Entities.json</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
+            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">XmlToPlossumCmdLineOptions -i ..\..\SSoT\CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/SassyMQ/>
+            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">sassymq/smql-to-csharp-rabbitmq -i ..\..\..\SassyMQ\Lexicon.smql -i ../../../ODXML/DataSchema.odxml</div></div><h2>Input Files</h2><div><h3>Entities.json</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/json.png"  />
             </div><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/xml.png"  />
@@ -68,9 +69,19 @@ body {
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/csharp.png"  />
             </div></div><h3>Xml To Plossum Cmd Line Options</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary</span><br />/> <b>ssotme </b> <a href="#347fee67-4f17-4427-b59a-fb0a220155f5" >xml-to-plossum-cmd-line-options</a> -i " /SSoT/CommandLineArgs.csv.xml, ..."
                 </div><div style="padding-left: 2em;"><div>
-                                /PlussumCLIHandler.cs</div><div>
-                                /PlussumCLIHandler.designer.cs</div><div>
-                                /PlussumCLIHandler.html</div></div></div></div></div></div></div><hr /><H3>All Transpilers</H3>
+                                /EAPICLIHandler.cs</div><div>
+                                /EAPICLIHandler.designer.cs</div><div>
+                                /EAPICLIHandler.html</div></div></div></div></div></div></div><div><h3>Lexicon.smql</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
+                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/smql.png"  />
+            </div><div class="pull-left" style="height: 3em; width: 3em;">
+                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/csharp.png"  />
+            </div></div><h3>Smql To C Sharp Rabbit M Q</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/SassyMQ</span><br />/> <b>ssotme </b> <a href="#8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2" >smql-to-c-sharp-rabbit-m-q</a> -i " /SassyMQ/Lexicon.smql, ..."
+                </div><div style="padding-left: 2em;"><div>
+                                /DMProxy.cs</div><div>
+                                /SMQGuest.cs</div><div>
+                                /SMQGuest.designer.cs</div>
+                        .../ (+14 more)
+                    </div></div></div></div></div></div><hr /><H3>All Transpilers</H3>
         
         <hr id="59d52a51-a25e-4d84-8be6-cee97a17adf6 6/>
 
@@ -167,10 +178,42 @@ body {
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/csharp.png"  />
             </div></div><h3>Xml To Plossum Cmd Line Options</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary</span><br />/> <b>ssotme </b> <a href="#347fee67-4f17-4427-b59a-fb0a220155f5" >xml-to-plossum-cmd-line-options</a> -i " /SSoT/CommandLineArgs.csv.xml, ..."
                 </div><div style="padding-left: 2em;"><div>
-                                /PlussumCLIHandler.cs</div><div>
-                                /PlussumCLIHandler.designer.cs</div><div>
-                                /PlussumCLIHandler.html</div></div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Xml To Plossum Cmd Line Options</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">XmlToPlossumCmdLineOptions -i ..\..\SSoT\CommandLineArgs.csv.xml</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SSoT/CommandLineArgs.csv.xml ----->
+                                /EAPICLIHandler.cs</div><div>
+                                /EAPICLIHandler.designer.cs</div><div>
+                                /EAPICLIHandler.html</div></div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Xml To Plossum Cmd Line Options</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">XmlToPlossumCmdLineOptions -i ..\..\SSoT\CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SSoT/CommandLineArgs.csv.xml ----->
                         </div></div><div style="margin-left: 2em; padding: 0.5em;"><div>
-                    -> DotNet/CLIClassLibrary/PlussumCLIHandler.cs</div><div>
-                    -> DotNet/CLIClassLibrary/PlussumCLIHandler.designer.cs</div><div>
-                    -> DotNet/CLIClassLibrary/PlussumCLIHandler.html</div></div></body></html>
+                    -> DotNet/CLIClassLibrary/EAPICLIHandler.cs</div><div>
+                    -> DotNet/CLIClassLibrary/EAPICLIHandler.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/EAPICLIHandler.html</div></div>
+        <hr id="8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2 6/>
+
+        <div style="clear: both;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
+                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/smql.png"  />
+            </div><div class="pull-left" style="height: 3em; width: 3em;">
+                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/csharp.png"  />
+            </div></div><h3>Smql To C Sharp Rabbit M Q</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/SassyMQ</span><br />/> <b>ssotme </b> <a href="#8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2" >smql-to-c-sharp-rabbit-m-q</a> -i " /SassyMQ/Lexicon.smql, ..."
+                </div><div style="padding-left: 2em;"><div>
+                                /DMProxy.cs</div><div>
+                                /SMQGuest.cs</div><div>
+                                /SMQGuest.designer.cs</div>
+                        .../ (+14 more)
+                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Smql To CSharp RabbitMQ</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">sassymq/smql-to-csharp-rabbitmq -i ..\..\..\SassyMQ\Lexicon.smql -i ../../../ODXML/DataSchema.odxml</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SassyMQ/Lexicon.smql ----->
+                        </div><div>/ODXML/DataSchema.odxml ----->
+                        </div></div><div style="margin-left: 2em; padding: 0.5em;"><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/DMProxy.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQGuest.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQGuest.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQCRUDCoordinator.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQCRUDCoordinator.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQGamingCoordinator.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQGamingCoordinator.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQPlayer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQPlayer.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQAdmin.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQAdmin.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQSpectator.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQSpectator.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/StandardPayload.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/StandardPayload.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/PayloadEventArgs.cs</div><div>
+                    -> DotNet/CLIClassLibrary/SassyMQ/SMQActorBase.cs</div></div></body></html>

@@ -1,7 +1,8 @@
 ﻿Name,Description,Aliases,DataType,IsOptional,IsList,DefaultValue,ExampleValue,SortOrder
-authenticate,Authenticate as a user,auth,bool,TRUE,FALSE,FALSE,,1
-emailAddress,The users email address,e,string,TRUE,FALSE,,test@test.com,2
-password,the user's password,p,string,TRUE,FALSE,,pwd123,3
-AddCell,Add a cell to the database,,string,TRUE,FALSE,,{'cell…},4
-DeleteCell,Removes a cell from the db,,string,TRUE,FALSE,,abc123,5
-GetCells,Get a list of cells from the db,,string,TRUE,FALSE,,CellIndex=5,6
+authenticate,Authenticate as a user,auth,string,TRUE,FALSE,,test@test.com,1
+demoPassword,the user's password,p,string,TRUE,FALSE,,pwd123,3
+invoke,Invoke a method,i,string,TRUE,FALSE,,AddCell,4
+bodyData,Raw data provided,d,string,TRUE,FALSE,,{'cell…},5
+bodyFile,Path to file to use,f,string,TRUE,FALSE,,Cell.json,6
+runas,Who to run as,as,string,FALSE,FALSE,Guest,Admin,7
+amqps,AMQPS Connection String,amqp,string,FALSE,FALSE,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,

@@ -45,6 +45,11 @@
       "Value": "false"
     },
     {
+      "ProjectSettingId": "928dbe3b-5324-4dea-832c-c7aa8044ae48",
+      "Name": "dataclasses-namespace",
+      "Value": "tictactoechallenge.Lib.DataClasses"
+    },
+    {
       "ProjectSettingId": "085c785c-4f25-498b-9b1f-0e80a4f41f84",
       "Name": "amqps",
       "Value": "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo"
@@ -243,7 +248,45 @@
       "ProjectTranspilerId": "347fee67-4f17-4427-b59a-fb0a220155f5",
       "Name": "XmlToPlossumCmdLineOptions",
       "RelativePath": "/DotNet/CLIClassLibrary",
-      "CommandLine": "XmlToPlossumCmdLineOptions -i ..\\..\\SSoT\\CommandLineArgs.csv.xml"
+      "CommandLine": "XmlToPlossumCmdLineOptions -i ..\\..\\SSoT\\CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "cf9074b7-4448-474a-adb6-cfffc0911e6c",
+        "Name": "SmqlToCSharpRabbitMQ",
+        "DisplayName": "Smql To C Sharp Rabbit M Q",
+        "Description": "Smql To CSharp RabbitMQ",
+        "CreatedOn": "2017-09-15T22:13:19.003",
+        "IsActive": true,
+        "CurrentRoutingKey": "amq.gen--cLV8iSWptmg1Hc2cu4fzw",
+        "LowerName": "smqltocsharprabbitmq",
+        "UpperName": "SMQLTOCSHARPRABBITMQ",
+        "LowerHyphenName": "smql-to-c-sharp-rabbit-m-q",
+        "ReadMeMD": "Parameters:\r\n - acronym = \"/SMQLexicon/Acronym\" \r\n - payload-type = concat($acronym, 'Payload')\r\n - actor-base-type = concat($acronym, 'ActorBase')\r\n",
+        "InputFileTypeId": "87c1c579-ea4f-47db-a064-f26f9ca1d91e",
+        "OutputFileTypeId": "47f5fc9f-0c22-4f73-8d18-0544a7f05d7b",
+        "Category": "rabbitmq",
+        "IsRecommended": true,
+        "TranspileRequests": [],
+        "TranspilerInstances": [],
+        "TranspilerVersions": [
+          {
+            "TranspilerVersionId": "b189ce7b-4086-4575-b89d-aafcbe02bba9",
+            "TranspilerId": "cf9074b7-4448-474a-adb6-cfffc0911e6c",
+            "Name": "v1",
+            "CreatedOn": "2017-09-15T22:13:25.117",
+            "IsActive": true,
+            "TranspilerFileTypeId_TranspilerInputHints": [],
+            "TranspilerInstances": [],
+            "ReplacedByTranspilerVersionId_TranspilerVersions": []
+          }
+        ]
+      },
+      "CLIHandler": null,
+      "ProjectTranspilerId": "8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2",
+      "Name": "SmqlToCSharpRabbitMQ",
+      "RelativePath": "/DotNet/CLIClassLibrary/SassyMQ",
+      "CommandLine": "sassymq/smql-to-csharp-rabbitmq -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i ../../../ODXML/DataSchema.odxml"
     }
   ]
 }

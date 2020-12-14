@@ -1,4 +1,4 @@
-﻿using EAPICLILib;
+﻿using SSoTme.Default.Lib.CLIHandler;
 using System;
 
 namespace EAPICLI
