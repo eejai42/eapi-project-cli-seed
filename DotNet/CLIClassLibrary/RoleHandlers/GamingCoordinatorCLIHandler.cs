@@ -12,10 +12,10 @@ namespace CLIClassLibrary.RoleHandlers
         {
         }
 
-        public override string Handle(string invoke, string data)
+        public override string Handle(string invoke, string data, string where)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
-            string result = HandlerFactory(invoke, data);
+            string result = HandlerFactory(invoke, data, where);
             return result;
         }
     }

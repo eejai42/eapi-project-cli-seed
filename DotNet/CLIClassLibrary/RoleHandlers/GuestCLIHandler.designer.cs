@@ -9,12 +9,13 @@ namespace CLIClassLibrary.RoleHandlers
 {
     public partial class GuestCLIHandler
     {
-        private string HandlerFactory(string invokeRequest, string payloadString)
+        private string HandlerFactory(string invokeRequest, string payloadString, string where)
         {
             var result = "";
             var payload = JsonConvert.DeserializeObject<StandardPayload>(payloadString);
             payload.SetActor(this.SMQActor);
             payload.AccessToken = this.SMQActor.AccessToken;
+            payload.AirtableWhere = where;
 
             switch (invokeRequest.ToLower())
             {

@@ -39,10 +39,10 @@ namespace CLIClassLibrary.RoleHandlers
         {
         }
 
-        public override string Handle(string invoke, string data)
+        public override string Handle(string invoke, string data, string where)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
-            string result = HandlerFactory(invoke, data);
+            string result = HandlerFactory(invoke, data, where);
             return result;
         }
     }
@@ -63,12 +63,13 @@ namespace CLIClassLibrary.RoleHandlers
 {
     public partial class <xsl:value-of select="Name"/>CLIHandler
     {
-        private string HandlerFactory(string invokeRequest, string payloadString)
+        private string HandlerFactory(string invokeRequest, string payloadString, string where)
         {
             var result = "";
             var payload = JsonConvert.DeserializeObject&lt;StandardPayload>(payloadString);
             payload.SetActor(this.SMQActor);
             payload.AccessToken = this.SMQActor.AccessToken;
+            payload.AirtableWhere = where;
 
             switch (invokeRequest.ToLower())
             {<xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">

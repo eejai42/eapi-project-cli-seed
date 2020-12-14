@@ -27,9 +27,10 @@ namespace SSoTme.Default.Lib.CLIHandler
         {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var projectName = "ej-tictactoe-demo";
-            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{projectName}.token"));
+            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{runas}", $"{projectName}.token"));
             if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
-            return File.ReadAllText(fileInfo.FullName);            
+            if (!fileInfo.Exists) return String.Empty;
+            else return File.ReadAllText(fileInfo.FullName);            
         }
 
         public string ProcessRequest()
@@ -48,7 +49,7 @@ namespace SSoTme.Default.Lib.CLIHandler
                 if (!fileInfo.Exists) throw new Exception($"-bodyFile {this.bodyFile} does not exists.");
                 else if (String.IsNullOrEmpty(this.bodyData)) this.bodyData = File.ReadAllText(fileInfo.FullName);
             }
-            var result = this.RoleHandler.Handle(this.invoke, this.bodyData);
+            var result = this.RoleHandler.Handle(this.invoke, this.bodyData, this.where);
             return result;
         }
 
@@ -77,7 +78,7 @@ namespace SSoTme.Default.Lib.CLIHandler
         {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var projectName = "ej-tictactoe-demo";
-            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{projectName}.token"));
+            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{this.runas}", $"{projectName}.token"));
             if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
             File.WriteAllText(fileInfo.FullName, accessToken);
         }

@@ -69,5 +69,16 @@
     <IsList>FALSE</IsList>
     <DefaultValue>amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo</DefaultValue>
     <ExampleValue>amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo</ExampleValue>
+    <SortOrder>8</SortOrder>
+  </CommandLineArg>
+  <CommandLineArg>
+    <Name>where</Name>
+    <Description>Limit the where clause</Description>
+    <Aliases>w</Aliases>
+    <DataType>string</DataType>
+    <IsOptional>TRUE</IsOptional>
+    <IsList>FALSE</IsList>
+    <ExampleValue>IsActive=1</ExampleValue>
+    <SortOrder>9</SortOrder>
   </CommandLineArg>
 </CommandLineArgs>
