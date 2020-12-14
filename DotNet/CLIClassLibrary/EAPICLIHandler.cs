@@ -16,7 +16,7 @@ namespace SSoTme.Default.Lib.CLIHandler
     {
         public EAPICLIHandler(string[] args)
         {
-            _amqps = "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo";
+            this.amqps = "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo";
             var list = args.ToList();
             list.Insert(0, "cli");
             this.Parser = new CommandLineParser(this);
@@ -41,7 +41,13 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         private string Invoke()
         {
-            this.RoleHandler = RoleHandlerBase.CreateHandler(this.runas, this.amqps);            
+            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);            
+            if (!String.IsNullOrEmpty(this.bodyFile))
+            {
+                var fileInfo = new FileInfo(this.bodyFile);
+                if (!fileInfo.Exists) throw new Exception($"-bodyFile {this.bodyFile} does not exists.");
+                else if (String.IsNullOrEmpty(this.bodyData)) this.bodyData = File.ReadAllText(fileInfo.FullName);
+            }
             var result = this.RoleHandler.Handle(this.invoke, this.bodyData);
             return result;
         }

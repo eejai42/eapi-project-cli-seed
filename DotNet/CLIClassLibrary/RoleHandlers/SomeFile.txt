@@ -1,0 +1,12 @@
+Role:
+                    
+                        -- GamingCoordinator
+                    
+                        -- Player
+                    
+                        -- Spectator
+                    
+                        -- Guest
+                    
+                        -- Admin
+                    

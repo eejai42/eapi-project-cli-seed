@@ -4,11 +4,11 @@ using YP.SassyMQ.Lib.RabbitMQ;
 
 namespace CLIClassLibrary.RoleHandlers
 {
-    public partial class PlayerCLIHandler : RoleHandlerBase<SMQPlayer>
+    public partial class SpectatorCLIHandler : RoleHandlerBase<SMQSpectator>
     {
 
-        public PlayerCLIHandler(string amqps, string accessToken)
-            : base(new SMQPlayer(amqps), accessToken)
+        public SpectatorCLIHandler(string amqps, string accessToken)
+            : base(new SMQSpectator(amqps), accessToken)
         {
         }
 

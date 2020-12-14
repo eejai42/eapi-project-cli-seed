@@ -5,11 +5,14 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLIClassLibrary", "DotNet\CLIClassLibrary\CLIClassLibrary.csproj", "{565D4F47-437F-4924-A2FE-306E1ED2D43C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAPICLI", "DotNet\EAPICLI\EAPICLI.csproj", "{0D007364-3A66-4DD2-9263-1183843E00B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAPICLI", "DotNet\EAPICLI\EAPICLI.csproj", "{0D007364-3A66-4DD2-9263-1183843E00B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9E5E3602-3346-4C7D-80E7-A5DEB6FF63B7}"
 	ProjectSection(SolutionItems) = preProject
 		SSoT\CLIOptions.csv.xml = SSoT\CLIOptions.csv.xml
+		SSoT\EAPIConfig.json = SSoT\EAPIConfig.json
+		SSoT\EAPIConfig.json.xml = SSoT\EAPIConfig.json.xml
+		SassyMQ\Lexicon.smql = SassyMQ\Lexicon.smql
 		SSoTmeProject.json = SSoTmeProject.json
 	EndProjectSection
 EndProject

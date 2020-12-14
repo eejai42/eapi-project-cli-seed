@@ -5,4 +5,5 @@ invoke,Invoke a method,i,string,TRUE,FALSE,,AddCell,4
 bodyData,Raw data provided,d,string,TRUE,FALSE,,{'cell…},5
 bodyFile,Path to file to use,f,string,TRUE,FALSE,,Cell.json,6
 runas,Who to run as,as,string,FALSE,FALSE,Guest,Admin,7
-amqps,AMQPS Connection String,amqp,string,FALSE,FALSE,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,
+amqps,AMQPS Connection String,amqp,string,FALSE,FALSE,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,8
+where,Limit the where clause,w,string,TRUE,FALSE,,IsActive=1,9

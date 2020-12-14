@@ -1,4 +1,5 @@
-﻿using SSoTme.Default.Lib.CLIHandler;
+﻿using Newtonsoft.Json;
+using SSoTme.Default.Lib.CLIHandler;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,26 +9,15 @@ namespace CLIClassLibrary.RoleHandlers
 {
     public abstract class RoleHandlerBase
     {
-        public static RoleHandlerBase CreateHandler(string runas, string amqps)
-        {
-            var accessToken = EAPICLIHandler.GetToken(runas);
-            switch (runas)
-            {
-                case "Guest":
-                    return new GuestCLIHandler(amqps, accessToken);
-
-                case "Player":
-                    return new PlayerCLIHandler(amqps, accessToken);
-
-                case "Admin":
-                    return new AdminCLIHandler(amqps, accessToken);
-
-                default:
-                    throw new Exception($"Can't find CLIHandler for {runas} actor.");
-            }
-        }
-
         public abstract string Handle(string invoke, string data);
+
+        protected string SerializePayload(StandardPayload reply)
+        {
+            return JsonConvert.SerializeObject(reply, Formatting.Indented, new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+        }
     }
 
     public abstract class RoleHandlerBase<T> : RoleHandlerBase
@@ -40,7 +30,5 @@ namespace CLIClassLibrary.RoleHandlers
             this.SMQActor = smqActor;
             this.SMQActor.AccessToken = accessToken;
         }
-
-        
     }
 }
