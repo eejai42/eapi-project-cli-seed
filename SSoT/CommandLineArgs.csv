@@ -1,0 +1,7 @@
+﻿Name,Description,Aliases,DataType,IsOptional,IsList,DefaultValue,ExampleValue,SortOrder
+authenticate,Authenticate as a user,auth,bool,TRUE,FALSE,FALSE,,1
+emailAddress,The users email address,e,string,TRUE,FALSE,,test@test.com,2
+password,the user's password,p,string,TRUE,FALSE,,pwd123,3
+AddCell,Add a cell to the database,,string,TRUE,FALSE,,{'cell…},4
+DeleteCell,Removes a cell from the db,,string,TRUE,FALSE,,abc123,5
+GetCells,Get a list of cells from the db,,string,TRUE,FALSE,,CellIndex=5,6
