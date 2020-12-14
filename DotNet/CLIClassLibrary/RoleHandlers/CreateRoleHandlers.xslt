@@ -113,8 +113,8 @@ namespace CLIClassLibrary.RoleHandlers
             {
                 <xsl:for-each select="/EAPIConfig/ProjectRoles">
                     <xsl:variable name="role-name" select="Name" />
-                case "<xsl:variable name="role-name" select="translate(Name, $ucletters, $lcletters)" />":
-                    return new <xsl:variable name="role-name" select="Name" />CLIHandler(amqps, accessToken);
+                case "<xsl:value-of select="translate(Name, $ucletters, $lcletters)" />":
+                    return new <xsl:value-of select="$role-name" />CLIHandler(amqps, accessToken);
 </xsl:for-each>
 
                 default:
