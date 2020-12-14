@@ -14,6 +14,8 @@ namespace SSoTme.Default.Lib.CLIHandler
 
     public partial class EAPICLIHandler
     {
+        public static string C_PROJECT_NAME = "ej-tictactoe-demo";
+
         public EAPICLIHandler(string[] args)
         {
             this.amqps = "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo";
@@ -23,33 +25,55 @@ namespace SSoTme.Default.Lib.CLIHandler
             this.Parser.Parse(list.ToArray());
         }
 
+        internal static string GetMostRecentUser()
+        {
+            var di = new DirectoryInfo(ProjectRootPath);
+            var lastModified = di.GetFiles().OrderByDescending(fi => fi.LastWriteTime).FirstOrDefault();
+            var lastName = Path.GetFileNameWithoutExtension(lastModified.Name);
+            return lastName;
+        }
+
         internal static string GetToken(string runas)
         {
             var root = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var projectName = "ej-tictactoe-demo";
-            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{runas}", $"{projectName}.token"));
+            var fileInfo = new FileInfo(Path.Combine(ProjectRootPath, $"{runas}.token"));
             if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
             if (!fileInfo.Exists) return String.Empty;
-            else return File.ReadAllText(fileInfo.FullName);            
+            else
+            {
+                var accessToken = File.ReadAllText(fileInfo.FullName);
+                File.WriteAllText(fileInfo.FullName, accessToken);
+                return accessToken;
+            }
         }
 
         public string ProcessRequest()
         {
+            this.SetInvokeIfMissing();
             if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
             else if (!String.IsNullOrEmpty(this.invoke)) return this.Invoke();
             else throw new Exception($"Sytnax error: cli -invoke DoSomething -bodyData {{}} -runas Admin");
         }
 
+        private void SetInvokeIfMissing()
+        {
+            if (String.IsNullOrEmpty(this.invoke) && this.Parser.RemainingArguments.Any())
+            {
+                this.invoke = this.Parser.RemainingArguments.First();
+            }
+        }
+
         private string Invoke()
         {
-            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);            
+            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
             if (!String.IsNullOrEmpty(this.bodyFile))
             {
                 var fileInfo = new FileInfo(this.bodyFile);
-                if (!fileInfo.Exists) throw new Exception($"-bodyFile {this.bodyFile} does not exists.");
+                if (!fileInfo.Exists) throw new Exception($"-bodyFile {fileInfo.FullName} does not exists.");
                 else if (String.IsNullOrEmpty(this.bodyData)) this.bodyData = File.ReadAllText(fileInfo.FullName);
             }
             var result = this.RoleHandler.Handle(this.invoke, this.bodyData, this.where);
+            if (!String.IsNullOrEmpty(this.output)) File.WriteAllText(this.output, result);
             return result;
         }
 
@@ -76,15 +100,17 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         private void SaveAuth(string accessToken)
         {
-            var root = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var projectName = "ej-tictactoe-demo";
-            var fileInfo = new FileInfo(Path.Combine(root, ".eapi", $"{this.runas}", $"{projectName}.token"));
+            var fileInfo = new FileInfo(Path.Combine(ProjectRootPath, $"{this.runas}.token"));
             if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
             File.WriteAllText(fileInfo.FullName, accessToken);
         }
 
         public CommandLineParser Parser { get; }
         internal RoleHandlerBase RoleHandler { get; private set; }
+
+        public static string RootPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); } }
+
+        public static string ProjectRootPath { get { return Path.Combine(RootPath, ".eapi", $"{C_PROJECT_NAME}"); } }
 
         public static void HandleRequest(string[] args)
         {

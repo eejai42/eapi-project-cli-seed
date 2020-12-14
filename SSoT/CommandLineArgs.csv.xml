@@ -81,4 +81,14 @@
     <ExampleValue>IsActive=1</ExampleValue>
     <SortOrder>9</SortOrder>
   </CommandLineArg>
+  <CommandLineArg>
+    <Name>output</Name>
+    <Description>Output file name</Description>
+    <Aliases>out</Aliases>
+    <DataType>string</DataType>
+    <IsOptional>TRUE</IsOptional>
+    <IsList>FALSE</IsList>
+    <ExampleValue>output.json</ExampleValue>
+    <SortOrder>10</SortOrder>
+  </CommandLineArg>
 </CommandLineArgs>

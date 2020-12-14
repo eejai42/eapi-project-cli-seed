@@ -49,6 +49,10 @@ namespace YP.SassyMQ.Lib.RabbitMQ
         public string EmailAddress { get; set; }
         public string DemoPassword { get; set; }
         public string AirtableWhere { get; set; }
+        public object SingletonAppUser { get; set; }
+        public string WhoAreYouRelativeUrl { get; set; }
+        public string WhoAreYouTextFileContents { get; set; }
+        public byte[] WhoAreYouBinaryFileContents { get; set; }
 
         public void SetActor(SMQActorBase actor) 
         {

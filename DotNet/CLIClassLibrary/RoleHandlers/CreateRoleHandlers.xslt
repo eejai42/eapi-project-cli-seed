@@ -94,12 +94,35 @@ namespace CLIClassLibrary.RoleHandlers
                 </xsl:for-each>
                 <FileSetFile>
                     <RelativePath>
-                        <xsl:text>SomeFile.txt</xsl:text>
+                        <xsl:text>RoleHandlerFactory.cs</xsl:text>
                     </RelativePath>
-                    <xsl:element name="FileContents" xml:space="preserve">Role:
-                    <xsl:for-each select="/EAPIConfig/ProjectRoles">
-                        -- <xsl:value-of select="Name"/>
-                    </xsl:for-each>
+                    <xsl:element name="FileContents" xml:space="preserve">using SSoTme.Default.Lib.CLIHandler;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CLIClassLibrary.RoleHandlers
+{
+    public static class RoleHandlerFactory
+    {
+        public static RoleHandlerBase CreateHandler(string runas, string amqps)
+        {
+            if (String.IsNullOrEmpty(runas)) runas = EAPICLIHandler.GetMostRecentUser();
+            var accessToken = EAPICLIHandler.GetToken(runas);
+            switch (runas.ToLower())
+            {
+                <xsl:for-each select="/EAPIConfig/ProjectRoles">
+                    <xsl:variable name="role-name" select="Name" />
+                case "<xsl:variable name="role-name" select="translate(Name, $ucletters, $lcletters)" />":
+                    return new <xsl:variable name="role-name" select="Name" />CLIHandler(amqps, accessToken);
+</xsl:for-each>
+
+                default:
+                    throw new Exception($"Can't find CLIHandler for {runas} actor.");
+            }
+        }
+    }
+}
 </xsl:element>
                 </FileSetFile>
             </FileSetFiles>

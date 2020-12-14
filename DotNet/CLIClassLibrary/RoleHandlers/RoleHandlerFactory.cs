@@ -9,6 +9,7 @@ namespace CLIClassLibrary.RoleHandlers
     {
         public static RoleHandlerBase CreateHandler(string runas, string amqps)
         {
+            if (String.IsNullOrEmpty(runas)) runas = EAPICLIHandler.GetMostRecentUser();
             var accessToken = EAPICLIHandler.GetToken(runas);
             switch (runas.ToLower())
             {

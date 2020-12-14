@@ -2,7 +2,7 @@
   "profiles": {
     "EAPICLI": {
       "commandName": "Project",
-      "commandLineArgs": "-invoke getcells -as Guest -where foo"
+      "commandLineArgs": "getCells"
     }
   }
 }

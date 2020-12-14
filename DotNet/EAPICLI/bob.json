@@ -1,0 +1,19 @@
+{
+  "PayloadId": "3be798b4-3530-4de7-beb8-82ea76ef76d5",
+  "SenderId": "b88d56b1-94bf-4b5e-9bf3-69a4a17ee85a",
+  "SenderName": "CRUDCoordinator@18.219.20.154",
+  "Content": "",
+  "IsHandled": true,
+  "OnlineSince": "0001-01-01T00:00:00",
+  "RoutingKey": "",
+  "User": 
+    {
+      "UserId": "recdJuGsT4MfamvJp",
+      "Name": "Bob",
+      "GamesAsPlayer": [
+        "recXZ6jrk8GaIQz8V",
+        "rect6m00RVrP47wkU"
+      ],
+      "IsAI": 0
+    }
+}
