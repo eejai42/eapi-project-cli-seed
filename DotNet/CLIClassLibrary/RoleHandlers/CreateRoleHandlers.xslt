@@ -17,7 +17,7 @@
     <xsl:template match="/*">
         <FileSet>
             <FileSetFiles>
-                <xsl:for-each select="/EAPIConfig/ProjectRoles">
+                <xsl:for-each select="$smq//SMQActors/SMQActor">
                     <xsl:variable name="role-name" select="Name" />
                     <FileSetFile>
                         <RelativePath>
@@ -26,7 +26,7 @@
                         </RelativePath>
                         <OverwriteMode>Never</OverwriteMode>
                         <xsl:element name="FileContents" xml:space="preserve">using Newtonsoft.Json;
-using tictactoechallenge.Lib.DataClasses;
+using EAPI.CLI.Lib.DataClasses;
 using YP.SassyMQ.Lib.RabbitMQ;
 
 namespace CLIClassLibrary.RoleHandlers
@@ -56,7 +56,7 @@ namespace CLIClassLibrary.RoleHandlers
 using System;
 using System.Collections.Generic;
 using System.Text;
-using tictactoechallenge.Lib.DataClasses;
+using EAPI.CLI.Lib.DataClasses;
 using YP.SassyMQ.Lib.RabbitMQ;
 
 namespace CLIClassLibrary.RoleHandlers
@@ -111,7 +111,7 @@ namespace CLIClassLibrary.RoleHandlers
             var accessToken = EAPICLIHandler.GetToken(runas);
             switch (runas.ToLower())
             {
-                <xsl:for-each select="/EAPIConfig/ProjectRoles">
+                <xsl:for-each select="$smq//SMQActors/SMQActor">
                     <xsl:variable name="role-name" select="Name" />
                 case "<xsl:value-of select="translate(Name, $ucletters, $lcletters)" />":
                     return new <xsl:value-of select="$role-name" />CLIHandler(amqps, accessToken);

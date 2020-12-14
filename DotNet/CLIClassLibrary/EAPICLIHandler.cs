@@ -18,7 +18,7 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         public EAPICLIHandler(string[] args)
         {
-            this.amqps = "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo";
+            this.amqps = $"amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/{C_PROJECT_NAME}";
             var list = args.ToList();
             list.Insert(0, "cli");
             this.Parser = new CommandLineParser(this);
@@ -28,9 +28,14 @@ namespace SSoTme.Default.Lib.CLIHandler
         internal static string GetMostRecentUser()
         {
             var di = new DirectoryInfo(ProjectRootPath);
+            if (!di.Exists) di.Create();
             var lastModified = di.GetFiles().OrderByDescending(fi => fi.LastWriteTime).FirstOrDefault();
-            var lastName = Path.GetFileNameWithoutExtension(lastModified.Name);
-            return lastName;
+            if (lastModified is null) return "Guest";
+            else
+            {
+                var lastName = Path.GetFileNameWithoutExtension(lastModified.Name);
+                return lastName;
+            }
         }
 
         internal static string GetToken(string runas)

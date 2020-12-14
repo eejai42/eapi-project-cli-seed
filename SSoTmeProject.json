@@ -47,7 +47,7 @@
     {
       "ProjectSettingId": "928dbe3b-5324-4dea-832c-c7aa8044ae48",
       "Name": "dataclasses-namespace",
-      "Value": "tictactoechallenge.Lib.DataClasses"
+      "Value": "EAPI.CLI.Lib.DataClasses"
     },
     {
       "ProjectSettingId": "085c785c-4f25-498b-9b1f-0e80a4f41f84",
@@ -88,49 +88,7 @@
       "ProjectTranspilerId": "59d52a51-a25e-4d84-8be6-cee97a17adf6",
       "Name": "SSoT",
       "RelativePath": "",
-      "CommandLine": "effortless/ssot -p customUrl=docs/EAPIConfig.json"
-    },
-    {
-      "MatchedTranspiler": {
-        "TranspilerId": "b57bcecf-ae78-40f0-b475-95447d7f61a1",
-        "AccountHolderId": "1e876e4f-d63b-4698-bd68-3bc27876e41e",
-        "Name": "JsonToXml",
-        "DisplayName": "Json To Xml",
-        "Description": "Converts a json blob (or file) into Xml",
-        "CreatedOn": "2017-06-03T22:33:09.527",
-        "IsActive": true,
-        "CurrentRoutingKey": "amq.gen-oTOwWY09y9fflImFqdwieA",
-        "LowerName": "jsontoxml",
-        "UpperName": "JSONTOXML",
-        "LowerHyphenName": "json-to-xml",
-        "ReadMeMD": "Converts a json file into xml use the object property names as the names of the elements in the xml file.",
-        "InputDescriptionMD": "A validly formatted json file.",
-        "OutputDescriptionMD": "Will output a file called my-data.json.xml iwth an Xml version of the input json.",
-        "ExampleMD": "ssotme json-to-xml -i my-data.json",
-        "InputFileTypeId": "e827499f-f215-4b35-8dae-6bd423a75e4c",
-        "OutputFileTypeId": "f1b92a2a-3f83-4000-9b37-57f920e14419",
-        "Category": "type-conversion",
-        "IsRecommended": true,
-        "TranspileRequests": [],
-        "TranspilerInstances": [],
-        "TranspilerVersions": [
-          {
-            "TranspilerVersionId": "0e1a7915-f9c0-4430-9f04-9b21662c3634",
-            "TranspilerId": "b57bcecf-ae78-40f0-b475-95447d7f61a1",
-            "Name": "v1",
-            "CreatedOn": "2017-06-03T22:33:16.613",
-            "IsActive": true,
-            "TranspilerFileTypeId_TranspilerInputHints": [],
-            "TranspilerInstances": [],
-            "ReplacedByTranspilerVersionId_TranspilerVersions": []
-          }
-        ]
-      },
-      "CLIHandler": null,
-      "ProjectTranspilerId": "4b076363-67cd-4625-bfa0-e9fcd5f0c843",
-      "Name": "JsonToXml",
-      "RelativePath": "/SSoT",
-      "CommandLine": "codee42/json-to-xml -i .\\EAPIConfig.json"
+      "CommandLine": "effortless/ssot"
     },
     {
       "MatchedTranspiler": {
@@ -328,7 +286,7 @@
       "ProjectTranspilerId": "3c2165b3-d021-4a44-bfa0-feae29cf9512",
       "Name": "XmlXsltTransform",
       "RelativePath": "/DotNet/CLIClassLibrary/RoleHandlers",
-      "CommandLine": "codee42/xml-xslt-transform -i ..\\..\\..\\SSoT\\EAPIConfig.json.xml -i CreateRoleHandlers.xslt  -i ..\\..\\..\\SassyMQ\\Lexicon.smql"
+      "CommandLine": "codee42/xml-xslt-transform -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i CreateRoleHandlers.xslt"
     }
   ]
 }

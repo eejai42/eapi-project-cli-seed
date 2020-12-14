@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Threading;
-using dc = tictactoechallenge.Lib.DataClasses;
+using dc = EAPI.CLI.Lib.DataClasses;
 using RabbitMQ.Client.MessagePatterns;
 
 /*
 $smq-namespace: 
 $namespace: YP.SassyMQ.Lib.RabbitMQ
 $final-namespace: YP.SassyMQ.Lib.RabbitMQ
-$dataclasses-namespace: tictactoechallenge.Lib.DataClasses
+$dataclasses-namespace: EAPI.CLI.Lib.DataClasses
 */
 
 namespace YP.SassyMQ.Lib.RabbitMQ
