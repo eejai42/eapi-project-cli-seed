@@ -127,7 +127,7 @@
       "ProjectTranspilerId": "822b8b8b-d293-484a-9531-3c2b128599e1",
       "Name": "OdxmlToCSharpPOCOs",
       "RelativePath": "/DotNet/CLIClassLibrary/DataClasses",
-      "CommandLine": "odxml42/odxml-to-csharp-pocos -i ..\\..\\..\\ODXML\\DataSchema.odxml -p airtable=true"
+      "CommandLine": "odxml42/odxml-to-csharp-pocos -i ..\\..\\..\\ODXML\\DataSchema.odxml -p airtable=true  -p include-collections=false"
     },
     {
       "MatchedTranspiler": {
