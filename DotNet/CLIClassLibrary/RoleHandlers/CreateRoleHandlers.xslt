@@ -37,13 +37,8 @@ namespace CLIClassLibrary.RoleHandlers
     {
 
         public <xsl:value-of select="Name"/>CLIHandler(string amqps, string accessToken)
-            : base(new SMQ<xsl:value-of select="Name"/>(amqps), accessToken)
+            : base(amqps, accessToken)
         {
-        }
-        
-        public override void AddHelp(StringBuilder sb)
-        {
-            sb.AppendLine($"Help for {this.SMQActor.QueueName}...");
         }
 
         public override string Handle(string invoke, string data, string where)
@@ -72,7 +67,7 @@ namespace CLIClassLibrary.RoleHandlers
     {
         public override void AddHelp(StringBuilder sb, string helpTerm)
         {
-            sb.AppendLine($"Help for <xsl:value-of select="Name"/>: '{helpTerm}'");
+            sb.AppendLine($"Help for <xsl:value-of select="Name"/>.");
             
             helpTerm = helpTerm.ToLower();
             var found = helpTerm == "general";
@@ -81,8 +76,13 @@ namespace CLIClassLibrary.RoleHandlers
             {
                 sb.AppendLine();
                 <xsl:for-each select="$smq/*/SMQMessages/SMQMessage[ActorFrom = $role-name]">
-                sb.AppendLine($"<xsl:value-of select="RAWValues/Response"/>: <xsl:value-of select="Name"  />");</xsl:for-each>                                            
+                sb.AppendLine($"<xsl:choose>
+                    <xsl:when test="normalize-space(RAWValues/Response) != ''"><xsl:value-of select="RAWValues/Response"/></xsl:when>
+                <xsl:otherwise>void</xsl:otherwise>
+                </xsl:choose>: <xsl:value-of select="Name"  />");</xsl:for-each>                                            
             }
+            
+            sb.AppendLine($"{Environment.NewLine}Available Actions Matching: {helpTerm}");
             <xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">
             if ("<xsl:value-of select="translate(Name, $ucletters, $lcletters)"/>".Contains(helpTerm, StringComparison.OrdinalIgnoreCase))
             {
@@ -135,10 +135,8 @@ namespace CLIClassLibrary.RoleHandlers
                 sb.AppendLine($"* *  OBJECT DEF: <xsl:value-of select="Name" />     *");
                 sb.AppendLine($"* * * * * * * * * * * * * * * * * * * * * * * * * * *");
                 sb.AppendLine();
-                <xsl:for-each select="PropertyDefs/PropertyDef"><xsl:variable name="pd-crud" select="*[name() = concat($role-name,'CRUD')]" />
-                    <xsl:if test="string-length(normalize-space($pd-crud)) > 0">
-                    sb.AppendLine($"<xsl:value-of select="$pd-crud"/>      - <xsl:value-of select="Name"/>");</xsl:if>
-                </xsl:for-each>
+                <xsl:for-each select="PropertyDefs/PropertyDef"><xsl:variable name="pd-crud" select="*[name() = concat($role-name,'CRUD')]" /><xsl:if test="string-length(normalize-space($pd-crud)) > 0">
+                    sb.AppendLine($"<xsl:value-of select="$pd-crud"/>      - <xsl:value-of select="Name"/>");</xsl:if></xsl:for-each>
                 </xsl:if>
             </xsl:for-each>
         }
@@ -178,6 +176,12 @@ namespace CLIClassLibrary.RoleHandlers
                 default:
                     throw new Exception($"Can't find CLIHandler for {runas} actor.");
             }
+        }
+
+        public static void ListRoles(StringBuilder sbHelpBuilder)
+        {
+           <xsl:for-each select="$smq//SMQActors/SMQActor"><xsl:variable name="role-name" select="Name" />
+            sbHelpBuilder.AppendLine(" - <xsl:value-of select="$role-name"/>");</xsl:for-each>
         }
     }
 }

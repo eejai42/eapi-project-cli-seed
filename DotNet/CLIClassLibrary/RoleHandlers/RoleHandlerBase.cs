@@ -25,12 +25,26 @@ namespace CLIClassLibrary.RoleHandlers
     public abstract class RoleHandlerBase<T> : RoleHandlerBase
         where T : SMQActorBase
     {
-        public T SMQActor;
+        private T _smqActor;
 
-        public RoleHandlerBase(T smqActor, string accessToken)
+        public T SMQActor
         {
-            this.SMQActor = smqActor;
-            this.SMQActor.AccessToken = accessToken;
+            get { 
+                if (_smqActor is null)
+                {
+                    _smqActor = Activator.CreateInstance(typeof(T), this.AMQPS) as T;
+                    this.SMQActor.AccessToken = this.AccessToken;
+                }
+                return _smqActor; }
         }
+
+        public RoleHandlerBase(string amqps, string accessToken)
+        {
+            this.AMQPS = amqps;
+            this.AccessToken = accessToken;
+        }
+
+        public string AMQPS { get; }
+        public string AccessToken { get; }
     }
 }

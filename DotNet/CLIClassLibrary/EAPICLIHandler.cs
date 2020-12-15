@@ -15,6 +15,7 @@ namespace SSoTme.Default.Lib.CLIHandler
     public partial class EAPICLIHandler
     {
         public static string C_PROJECT_NAME = "ej-tictactoe-demo";
+        private RoleHandlerBase _roleHandler;
 
         public EAPICLIHandler(string[] args)
         {
@@ -54,25 +55,33 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         public string ProcessRequest()
         {
-            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
-            this.SetInvokeIfMissing();
-            if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
-            else if (this.help) return this.GetHelp();
+            this.SetDefaultCLIParameters();
+            if (this.help) return this.ShowHelp(); 
+            else if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
             else if (!String.IsNullOrEmpty(this.invoke)) return this.Invoke();
-            else throw new Exception($"Sytnax error: cli -invoke DoSomething -bodyData {{}} -runas Admin");
+            else throw new Exception($"Sytnax error: cli -invoke <action> -bodyData {{...}} -as Admin");
         }
 
-        private string GetHelp()
+        private string ShowHelp()
         {
-            var sb = new StringBuilder();
+            var sbHelpBuilder = new StringBuilder();
             var helpTerm = this.Parser.RemainingArguments.FirstOrDefault();
             if (String.IsNullOrEmpty(helpTerm)) helpTerm = "general";
-            this.RoleHandler.AddHelp(sb, helpTerm);
-            sb.AppendLine($"{Environment.NewLine}HELP - ABOUT YOUR CLI: {helpTerm}");
-            return sb.ToString();
+            this.RoleHandler.AddHelp(sbHelpBuilder, helpTerm);
+            if (helpTerm == "general")
+            {
+                sbHelpBuilder.AppendLine();
+                sbHelpBuilder.AppendLine();
+                sbHelpBuilder.AppendLine($"Syntax:");
+                sbHelpBuilder.AppendLine(this.Parser.UsageInfo.ToString());
+                sbHelpBuilder.AppendLine();
+                sbHelpBuilder.AppendLine($"Available Roles:");
+                RoleHandlerFactory.ListRoles(sbHelpBuilder);
+            }
+            return sbHelpBuilder.ToString();
         }
 
-        private void SetInvokeIfMissing()
+        private void SetDefaultCLIParameters()
         {
             var firstArgument = this.Parser.RemainingArguments.FirstOrDefault();
             if (String.Equals(firstArgument, "help", StringComparison.OrdinalIgnoreCase))
@@ -129,7 +138,18 @@ namespace SSoTme.Default.Lib.CLIHandler
         }
 
         public CommandLineParser Parser { get; }
-        internal RoleHandlerBase RoleHandler { get; private set; }
+        internal RoleHandlerBase RoleHandler
+        {
+            get
+            {
+                if (_roleHandler is null)
+                {
+                    _roleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
+                }
+                return _roleHandler;
+            }
+            private set => _roleHandler = value;
+        }
 
         public static string RootPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); } }
 
@@ -138,7 +158,6 @@ namespace SSoTme.Default.Lib.CLIHandler
         public static void HandleRequest(string[] args)
         {
             var handler = new EAPICLIHandler(args);
-            Console.WriteLine(handler.Parser.UsageInfo);
             Console.WriteLine(handler.ProcessRequest());
         }
     }
