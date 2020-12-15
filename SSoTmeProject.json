@@ -286,7 +286,7 @@
       "ProjectTranspilerId": "3c2165b3-d021-4a44-bfa0-feae29cf9512",
       "Name": "XmlXsltTransform",
       "RelativePath": "/DotNet/CLIClassLibrary/RoleHandlers",
-      "CommandLine": "codee42/xml-xslt-transform -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i CreateRoleHandlers.xslt"
+      "CommandLine": "codee42/xml-xslt-transform -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i CreateRoleHandlers.xslt -i ..\\..\\..\\ODXML\\DataSchema.odxml"
     }
   ]
 }

@@ -36,19 +36,12 @@ body {
 
 }
         </style></head><body><h1>tic-tac-toe-challenge Project Summary</h1><h2>Build Plan</h2><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/>
-            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">effortless/ssot -p customUrl=docs/EAPIConfig.json</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/SSoT/>
-            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/json-to-xml -i .\EAPIConfig.json</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/DataClasses/>
-            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">odxml42/odxml-to-csharp-pocos -i ..\..\..\ODXML\DataSchema.odxml -p airtable=true</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/SSoT/>
+            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">effortless/ssot</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/DataClasses/>
+            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">odxml42/odxml-to-csharp-pocos -i ..\..\..\ODXML\DataSchema.odxml -p airtable=true  -p include-collections=false</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/SSoT/>
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/csv-to-xml -i .\CommandLineArgs.csv</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/>
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">XmlToPlossumCmdLineOptions -i ..\..\SSoT\CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/SassyMQ/>
             <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">sassymq/smql-to-csharp-rabbitmq -i ..\..\..\SassyMQ\Lexicon.smql -i ../../../ODXML/DataSchema.odxml</div></div><div style="margin-top: 0.75em;"><b>[SSoTme-root] </b>/DotNet/CLIClassLibrary/RoleHandlers/>
-            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/xml-xslt-transform -i ..\..\..\SSoT\EAPIConfig.json.xml -i CreateRoleHandlers.xslt  -i ..\..\..\SassyMQ\Lexicon.smql</div></div><h2>Input Files</h2><div><h3>EAPIConfig.json</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
-                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/json.png"  />
-            </div><div class="pull-left" style="height: 3em; width: 3em;">
-                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/xml.png"  />
-            </div></div><h3>Json To Xml</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/SSoT</span><br />/> <b>ssotme </b> <a href="#4b076363-67cd-4625-bfa0-e9fcd5f0c843" >json-to-xml</a> -i " /SSoT/EAPIConfig.json, ..."
-                </div><div style="padding-left: 2em;"><div>
-                                /.\EAPIConfig.json.xml</div></div></div></div></div></div></div><div><h3>DataSchema.odxml</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
+            <div class="pre" style="padding-left: 15em; text-indent:-15em; font-size: 0.8em;">codee42/xml-xslt-transform -i ..\..\..\SassyMQ\Lexicon.smql -i CreateRoleHandlers.xslt -i ..\..\..\ODXML\DataSchema.odxml</div></div><h2>Input Files</h2><div><h3>DataSchema.odxml</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/odxml.png"  />
             </div><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/csharp.png"  />
@@ -82,16 +75,16 @@ body {
                                 /SMQGuest.cs</div><div>
                                 /SMQGuest.designer.cs</div>
                         .../ (+14 more)
-                    </div></div></div></div></div></div><div><h3>EAPIConfig.json.xml</h3><div style="background-color: #EEEEEE; margin: 0.25em; border: solid #CCCCCC 1px;"><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
+                    </div></div></div></div><div style="margin-left: 1em;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/xml.png"  />
             </div><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/fileset.png"  />
-            </div></div><h3>Xml Xslt Transform</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/RoleHandlers</span><br />/> <b>ssotme </b> <a href="#3c2165b3-d021-4a44-bfa0-feae29cf9512" >xml-xslt-transform</a> -i " /SSoT/EAPIConfig.json.xml, ..."
+            </div></div><h3>Xml Xslt Transform</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/RoleHandlers</span><br />/> <b>ssotme </b> <a href="#3c2165b3-d021-4a44-bfa0-feae29cf9512" >xml-xslt-transform</a> -i " /SassyMQ/Lexicon.smql, ..."
                 </div><div style="padding-left: 2em;"><div>
-                                /GamingCoordinatorCLIHandler.cs</div><div>
-                                /GamingCoordinatorCLIHandler.designer.cs</div><div>
-                                /PlayerCLIHandler.cs</div>
-                        .../ (+8 more)
+                                /GuestCLIHandler.cs</div><div>
+                                /GuestCLIHandler.designer.cs</div><div>
+                                /CRUDCoordinatorCLIHandler.cs</div>
+                        .../ (+10 more)
                     </div></div></div></div></div></div><hr /><H3>All Transpilers</H3>
         
         <hr id="59d52a51-a25e-4d84-8be6-cee97a17adf6 6/>
@@ -100,25 +93,11 @@ body {
                 </div><div style="padding-left: 2em;"><div>
                                 /ODXML/DataSchema.odxml</div><div>
                                 /SassyMQ/Lexicon.smql</div><div>
-                                /SSoT/Entities.json</div>
-                        .../ (+1 more)
-                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">SSoT</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">effortless/ssot -p customUrl=docs/EAPIConfig.json</span></div><div style="margin-left: 1em; padding: 0.5em;">customUrl=docs/EAPIConfig.json ----->
+                                /SSoT/Entities.json</div></div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">SSoT</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">effortless/ssot</span></div><div style="margin-left: 1em; padding: 0.5em;">project-name=tic-tac-toe-challenge ----->
                 </div><div style="margin-left: 2em; padding: 0.5em;"><div>
                     -> ODXML/DataSchema.odxml</div><div>
                     -> SassyMQ/Lexicon.smql</div><div>
-                    -> SSoT/Entities.json</div><div>
-                    -> SSoT/EAPIConfig.json</div></div>
-        <hr id="4b076363-67cd-4625-bfa0-e9fcd5f0c843 6/>
-
-        <div style="clear: both;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
-                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/json.png"  />
-            </div><div class="pull-left" style="height: 3em; width: 3em;">
-                <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/xml.png"  />
-            </div></div><h3>Json To Xml</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/SSoT</span><br />/> <b>ssotme </b> <a href="#4b076363-67cd-4625-bfa0-e9fcd5f0c843" >json-to-xml</a> -i " /SSoT/EAPIConfig.json, ..."
-                </div><div style="padding-left: 2em;"><div>
-                                /.\EAPIConfig.json.xml</div></div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Converts a json blob (or file) into Xml</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">codee42/json-to-xml -i .\EAPIConfig.json</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SSoT/EAPIConfig.json ----->
-                        </div></div><div style="margin-left: 2em; padding: 0.5em;"><div>
-                    -> SSoT/./EAPIConfig.json.xml</div></div>
+                    -> SSoT/Entities.json</div></div>
         <hr id="822b8b8b-d293-484a-9531-3c2b128599e1 6/>
 
         <div style="clear: both;"><div class="project-transpiler-link-box"><div class="pull-left"><div class="pull-left" style="height: 3em; width: 3em;">
@@ -131,7 +110,7 @@ body {
                                 /GlobalSetting.cs</div><div>
                                 /Score.designer.cs</div>
                         .../ (+34 more)
-                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Odxml To CSharp POCOs</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">odxml42/odxml-to-csharp-pocos -i ..\..\..\ODXML\DataSchema.odxml -p airtable=true</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/ODXML/DataSchema.odxml ----->
+                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Odxml To CSharp POCOs</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">odxml42/odxml-to-csharp-pocos -i ..\..\..\ODXML\DataSchema.odxml -p airtable=true  -p include-collections=false</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/ODXML/DataSchema.odxml ----->
                         </div></div><div style="margin-left: 2em; padding: 0.5em;"><div>
                     -> DotNet/CLIClassLibrary/DataClasses/GlobalSetting.designer.cs</div><div>
                     -> DotNet/CLIClassLibrary/DataClasses/GlobalSetting.cs</div><div>
@@ -234,24 +213,26 @@ body {
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/xml.png"  />
             </div><div class="pull-left" style="height: 3em; width: 3em;">
                 <img  style="width: 2.5em; height: 2.5em;" src="FileTypeImages/fileset.png"  />
-            </div></div><h3>Xml Xslt Transform</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/RoleHandlers</span><br />/> <b>ssotme </b> <a href="#3c2165b3-d021-4a44-bfa0-feae29cf9512" >xml-xslt-transform</a> -i " /SSoT/EAPIConfig.json.xml, ..."
+            </div></div><h3>Xml Xslt Transform</h3><div style="font-weight: bold; padding-after: 1em;"><div style="padding: 0.2em; white-space: pre-wrap; font-family: monospace"><span class="ssotme-root">[SSoTme-root]</span><span class="relative-path">/DotNet/CLIClassLibrary/RoleHandlers</span><br />/> <b>ssotme </b> <a href="#3c2165b3-d021-4a44-bfa0-feae29cf9512" >xml-xslt-transform</a> -i " /SassyMQ/Lexicon.smql, ..."
                 </div><div style="padding-left: 2em;"><div>
-                                /GamingCoordinatorCLIHandler.cs</div><div>
-                                /GamingCoordinatorCLIHandler.designer.cs</div><div>
-                                /PlayerCLIHandler.cs</div>
-                        .../ (+8 more)
-                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Given an Xml and Xslt file, will process and "split" a resulting fileset.</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">codee42/xml-xslt-transform -i ..\..\..\SSoT\EAPIConfig.json.xml -i CreateRoleHandlers.xslt  -i ..\..\..\SassyMQ\Lexicon.smql</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SSoT/EAPIConfig.json.xml ----->
+                                /GuestCLIHandler.cs</div><div>
+                                /GuestCLIHandler.designer.cs</div><div>
+                                /CRUDCoordinatorCLIHandler.cs</div>
+                        .../ (+10 more)
+                    </div></div></div></div><div style="clear: both;"><div style="white-space: pre-wrap; font-size: 0.8em; margin-top: -1.2em; padding: 0.2em;">Given an Xml and Xslt file, will process and "split" a resulting fileset.</div></div><div style="white-space: pre-wrap; clear: both"><span class="command-line">codee42/xml-xslt-transform -i ..\..\..\SassyMQ\Lexicon.smql -i CreateRoleHandlers.xslt -i ..\..\..\ODXML\DataSchema.odxml</span></div><div style="margin-left: 1em; padding: 0.5em;"><div>/SassyMQ/Lexicon.smql ----->
                         </div><div>/DotNet/CLIClassLibrary/RoleHandlers/CreateRoleHandlers.xslt ----->
-                        </div><div>/SassyMQ/Lexicon.smql ----->
+                        </div><div>/ODXML/DataSchema.odxml ----->
                         </div></div><div style="margin-left: 2em; padding: 0.5em;"><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/GuestCLIHandler.cs</div><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/GuestCLIHandler.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/CRUDCoordinatorCLIHandler.cs</div><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/CRUDCoordinatorCLIHandler.designer.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/GamingCoordinatorCLIHandler.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/GamingCoordinatorCLIHandler.designer.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/PlayerCLIHandler.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/PlayerCLIHandler.designer.cs</div><div>
-                    -> DotNet/CLIClassLibrary/RoleHandlers/SpectatorCLIHandler.cs</div><div>
-                    -> DotNet/CLIClassLibrary/RoleHandlers/SpectatorCLIHandler.designer.cs</div><div>
-                    -> DotNet/CLIClassLibrary/RoleHandlers/GuestCLIHandler.cs</div><div>
-                    -> DotNet/CLIClassLibrary/RoleHandlers/GuestCLIHandler.designer.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/AdminCLIHandler.cs</div><div>
                     -> DotNet/CLIClassLibrary/RoleHandlers/AdminCLIHandler.designer.cs</div><div>
-                    -> DotNet/CLIClassLibrary/RoleHandlers/SomeFile.txt</div></div></body></html>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/SpectatorCLIHandler.cs</div><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/SpectatorCLIHandler.designer.cs</div><div>
+                    -> DotNet/CLIClassLibrary/RoleHandlers/RoleHandlerFactory.cs</div></div></body></html>

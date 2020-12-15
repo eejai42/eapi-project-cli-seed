@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9E5E3602-3346-4C7D-80E7-A5DEB6FF63B7}"
 	ProjectSection(SolutionItems) = preProject
 		SSoT\CLIOptions.csv.xml = SSoT\CLIOptions.csv.xml
+		ODXML\DataSchema.odxml = ODXML\DataSchema.odxml
 		SSoT\EAPIConfig.json = SSoT\EAPIConfig.json
 		SSoT\EAPIConfig.json.xml = SSoT\EAPIConfig.json.xml
 		SassyMQ\Lexicon.smql = SassyMQ\Lexicon.smql

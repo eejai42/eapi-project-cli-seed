@@ -4,6 +4,7 @@
 >
     <xsl:variable name="smq" select="document('Lexicon.smql')" />
     <xsl:output method="xml" indent="yes"/>
+    <xsl:variable name="odxml" select="document('DataSchema.odxml')" />
 
     <xsl:include href="../CommonXsltTemplates.xslt"/>
     <xsl:param name="output-filename" select="'output.txt'" />
@@ -28,6 +29,7 @@
                         <xsl:element name="FileContents" xml:space="preserve">using Newtonsoft.Json;
 using EAPI.CLI.Lib.DataClasses;
 using YP.SassyMQ.Lib.RabbitMQ;
+using System.Text;
 
 namespace CLIClassLibrary.RoleHandlers
 {
@@ -37,6 +39,11 @@ namespace CLIClassLibrary.RoleHandlers
         public <xsl:value-of select="Name"/>CLIHandler(string amqps, string accessToken)
             : base(new SMQ<xsl:value-of select="Name"/>(amqps), accessToken)
         {
+        }
+        
+        public override void AddHelp(StringBuilder sb)
+        {
+            sb.AppendLine($"Help for {this.SMQActor.QueueName}...");
         }
 
         public override string Handle(string invoke, string data, string where)
@@ -63,6 +70,37 @@ namespace CLIClassLibrary.RoleHandlers
 {
     public partial class <xsl:value-of select="Name"/>CLIHandler
     {
+        public override void AddHelp(StringBuilder sb, string helpTerm)
+        {
+            sb.AppendLine($"Help for <xsl:value-of select="Name"/>: '{helpTerm}'");
+            
+            helpTerm = helpTerm.ToLower();
+            var found = helpTerm == "general";
+            
+            if (helpTerm == "general")
+            {
+                sb.AppendLine();
+                <xsl:for-each select="$smq/*/SMQMessages/SMQMessage[ActorFrom = $role-name]">
+                sb.AppendLine($"<xsl:value-of select="RAWValues/Response"/>: <xsl:value-of select="Name"  />");</xsl:for-each>                                            
+            }
+            <xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">
+            if ("<xsl:value-of select="translate(Name, $ucletters, $lcletters)"/>".Contains(helpTerm, StringComparison.OrdinalIgnoreCase))
+            {
+                sb.AppendLine($" - <xsl:value-of select="Name"/>");
+                if ("<xsl:value-of select="translate(Name, $ucletters, $lcletters)"/>".Equals(helpTerm, StringComparison.OrdinalIgnoreCase)) 
+                {
+                    this.Print<xsl:value-of select="Name"/>Help(sb);
+                }
+                found = true;
+            }</xsl:for-each>
+                       
+            if (!found)
+            {
+                sb.AppendLine();
+                sb.AppendLine($"{Environment.NewLine}UNABLE TO FIND COMMAND: {helpTerm} not found.");
+            }
+        }
+
         private string HandlerFactory(string invokeRequest, string payloadString, string where)
         {
             var result = "";
@@ -86,6 +124,26 @@ namespace CLIClassLibrary.RoleHandlers
 
             return result;
         }
+        
+        <xsl:for-each select="$smq/*/SMQMessages/SMQMessage[ActorFrom = $role-name]"><xsl:variable name="msg" select="." />
+        public void Print<xsl:value-of select="Name"/>Help(StringBuilder sb)
+        {
+            <xsl:for-each select="$odxml//ObjectDefs/ObjectDef[Name = $msg/RAWValues/Response]"><xsl:variable name="crud" select="normalize-space(*[name() = concat($role-name,'CRUD')])" />
+                <xsl:if test="$crud != 'None' and $crud != ''">
+                sb.AppendLine();
+                sb.AppendLine($"* * * * * * * * * * * * * * * * * * * * * * * * * * *");
+                sb.AppendLine($"* *  OBJECT DEF: <xsl:value-of select="Name" />     *");
+                sb.AppendLine($"* * * * * * * * * * * * * * * * * * * * * * * * * * *");
+                sb.AppendLine();
+                <xsl:for-each select="PropertyDefs/PropertyDef"><xsl:variable name="pd-crud" select="*[name() = concat($role-name,'CRUD')]" />
+                    <xsl:if test="string-length(normalize-space($pd-crud)) > 0">
+                    sb.AppendLine($"<xsl:value-of select="$pd-crud"/>      - <xsl:value-of select="Name"/>");</xsl:if>
+                </xsl:for-each>
+                </xsl:if>
+            </xsl:for-each>
+        }
+        </xsl:for-each>
+
     }
 }
 </xsl:element>

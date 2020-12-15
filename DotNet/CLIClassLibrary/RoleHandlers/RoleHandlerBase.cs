@@ -18,6 +18,8 @@ namespace CLIClassLibrary.RoleHandlers
                 NullValueHandling = NullValueHandling.Ignore
             });
         }
+
+        public abstract void AddHelp(StringBuilder sb, string helpTerm);
     }
 
     public abstract class RoleHandlerBase<T> : RoleHandlerBase

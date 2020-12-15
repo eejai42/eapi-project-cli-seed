@@ -54,23 +54,41 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         public string ProcessRequest()
         {
+            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
             this.SetInvokeIfMissing();
             if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
+            else if (this.help) return this.GetHelp();
             else if (!String.IsNullOrEmpty(this.invoke)) return this.Invoke();
             else throw new Exception($"Sytnax error: cli -invoke DoSomething -bodyData {{}} -runas Admin");
         }
 
+        private string GetHelp()
+        {
+            var sb = new StringBuilder();
+            var helpTerm = this.Parser.RemainingArguments.FirstOrDefault();
+            if (String.IsNullOrEmpty(helpTerm)) helpTerm = "general";
+            this.RoleHandler.AddHelp(sb, helpTerm);
+            sb.AppendLine($"{Environment.NewLine}HELP - ABOUT YOUR CLI: {helpTerm}");
+            return sb.ToString();
+        }
+
         private void SetInvokeIfMissing()
         {
-            if (String.IsNullOrEmpty(this.invoke) && this.Parser.RemainingArguments.Any())
+            var firstArgument = this.Parser.RemainingArguments.FirstOrDefault();
+            if (String.Equals(firstArgument, "help", StringComparison.OrdinalIgnoreCase))
             {
-                this.invoke = this.Parser.RemainingArguments.First();
+                this.help = true;
+                this.Parser.RemainingArguments.RemoveAt(0);
+            }
+
+            else if (String.IsNullOrEmpty(this.invoke) && !String.IsNullOrEmpty(firstArgument))
+            {
+                this.invoke = firstArgument;
             }
         }
 
         private string Invoke()
         {
-            this.RoleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
             if (!String.IsNullOrEmpty(this.bodyFile))
             {
                 var fileInfo = new FileInfo(this.bodyFile);

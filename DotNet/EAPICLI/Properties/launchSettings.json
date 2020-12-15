@@ -2,7 +2,7 @@
   "profiles": {
     "EAPICLI": {
       "commandName": "Project",
-      "commandLineArgs": "getcells"
+      "commandLineArgs": "-help -runas Guest"
     }
   }
 }

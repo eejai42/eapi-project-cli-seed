@@ -1,10 +1,11 @@
-﻿Name,Description,Aliases,DataType,IsOptional,IsList,DefaultValue,ExampleValue,SortOrder
-authenticate,Authenticate as a user,auth,string,TRUE,FALSE,,test@test.com,1
-demoPassword,the user's password,p,string,TRUE,FALSE,,pwd123,3
-invoke,Invoke a method,i,string,TRUE,FALSE,,AddCell,4
-bodyData,Raw data provided,d,string,TRUE,FALSE,,{'cell…},5
-bodyFile,Path to file to use,f,string,TRUE,FALSE,,Cell.json,6
-runas,Who to run as,as,string,FALSE,FALSE,Guest,Admin,7
-amqps,AMQPS Connection String,amqp,string,FALSE,FALSE,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,8
-where,Limit the where clause,w,string,TRUE,FALSE,,IsActive=1,9
-output,Output file name,out,string,TRUE,FALSE,,output.json,10
+﻿Name,Description,DataType,IsOptional,IsList,DefaultValue,ExampleValue,SortOrder,Aliases
+authenticate,Authenticate as a user,string,TRUE,FALSE,,test@test.com,1,
+demoPassword,the user's password,string,TRUE,FALSE,,pwd123,3,
+invoke,Invoke a method,string,TRUE,FALSE,,AddCell,4,
+bodyData,Raw data provided,string,TRUE,FALSE,,{'cell…},5,
+bodyFile,Path to file to use,string,TRUE,FALSE,,Cell.json,6,
+runas,Who to run as,string,FALSE,FALSE,Guest,Admin,7,as
+amqps,AMQPS Connection String,string,FALSE,FALSE,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo,8,
+where,Limit the where clause,string,TRUE,FALSE,,IsActive=1,9,
+output,Output file name,string,TRUE,FALSE,,output.json,10,
+help,Get help on a given topic,bool,TRUE,FALSE,FALSE,specific topic,11,
