@@ -1,0 +1,16 @@
+{
+  "name": "ej-tictactoe-demo",
+  "version": "0.0.3-alpha.13",
+  "description": "",
+  "devDependencies": {},
+  "bin": "cli.js",
+  "scripts": {
+    "build": "dotnet build EffortlessAPI-CLI.sln",
+    "start": "dotnet DotNet/EAPICLI/bin/Debug/netcoreapp3.1/eapicli.dll",
+    "postinstall": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GNU",
+  "dependencies": {}
+}

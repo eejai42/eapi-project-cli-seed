@@ -99,7 +99,7 @@ namespace YP.SassyMQ.Lib.RabbitMQ
 
             RMQChannel.QueueBind(queue: QueueName, exchange: this.AllExchange, routingKey: "#");
 
-            System.Console.WriteLine("CONNECTED: [*] Waiting for messages at {0}. To exit press CTRL+C", this.AllExchange);
+            // System.Console.WriteLine("CONNECTED: [*] Waiting for messages at {0}. To exit press CTRL+C", this.AllExchange);
 
             this.AfterConnect();
 
