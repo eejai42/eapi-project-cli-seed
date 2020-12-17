@@ -112,7 +112,7 @@ namespace CLIClassLibrary.RoleHandlers
             switch (invokeRequest.ToLower())
             {<xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">
                 case "<xsl:value-of select="translate(Name, $ucletters, $lcletters)"/>":
-                    this.SMQActor.<xsl:value-of select="Name"/>(payload, (reply, bdea) =>
+                    this.SMQActor.<xsl:value-of select="Name"/>(<xsl:if test="translate(normalize-space(IsDirectMessage), $ucletters, $lcletters) = 'true'">null, </xsl:if>payload, (reply, bdea) =>
                     {
                         result = SerializePayload(reply);
                     }).Wait(30000);
