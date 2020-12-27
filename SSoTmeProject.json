@@ -6,13 +6,13 @@
   "CurrentPath": null,
   "SaveDisabled": false,
   "SSoTmeProjectId": "45a4ee1b-0c77-40fa-9bfd-44c9d567293d",
-  "Name": "tic-tac-toe-challenge",
-  "RootPath": "C:\\Users\\auto1\\go\\src\\github.com\\eejai42\\effortless-api-cli-seed",
+  "Name": "ej-tictactoe-demo",
+  "RootPath": "C:/Users/auto1/go/src/github.com/eejai42/effortless-api-cli-seed",
   "ProjectSettings": [
     {
       "ProjectSettingId": "3df15eff-d25d-4ba9-ae9b-f6c82b7cd612",
       "Name": "project-name",
-      "Value": "tic-tac-toe-challenge"
+      "Value": "ej-tictactoe-demo"
     },
     {
       "ProjectSettingId": "5e421284-8add-480d-bec1-8e84c1720b26",
@@ -127,7 +127,7 @@
       "ProjectTranspilerId": "822b8b8b-d293-484a-9531-3c2b128599e1",
       "Name": "OdxmlToCSharpPOCOs",
       "RelativePath": "/DotNet/CLIClassLibrary/DataClasses",
-      "CommandLine": "odxml42/odxml-to-csharp-pocos -i ..\\..\\..\\ODXML\\DataSchema.odxml -p airtable=true  -p include-collections=false"
+      "CommandLine": "odxml42/odxml-to-csharp-pocos -i ../../../ODXML/DataSchema.odxml -p airtable=true  -p include-collections=false"
     },
     {
       "MatchedTranspiler": {
@@ -168,7 +168,7 @@
       "ProjectTranspilerId": "c052ae27-7c0b-454d-aa58-2fdd8b726ea0",
       "Name": "CsvToXml",
       "RelativePath": "/SSoT",
-      "CommandLine": "codee42/csv-to-xml -i .\\CommandLineArgs.csv"
+      "CommandLine": "codee42/csv-to-xml -i ./CommandLineArgs.csv"
     },
     {
       "MatchedTranspiler": {
@@ -206,7 +206,7 @@
       "ProjectTranspilerId": "347fee67-4f17-4427-b59a-fb0a220155f5",
       "Name": "XmlToPlossumCmdLineOptions",
       "RelativePath": "/DotNet/CLIClassLibrary",
-      "CommandLine": "XmlToPlossumCmdLineOptions -i ..\\..\\SSoT\\CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler"
+      "CommandLine": "XmlToPlossumCmdLineOptions -i ../../SSoT/CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler"
     },
     {
       "MatchedTranspiler": {
@@ -244,7 +244,7 @@
       "ProjectTranspilerId": "8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2",
       "Name": "SmqlToCSharpRabbitMQ",
       "RelativePath": "/DotNet/CLIClassLibrary/SassyMQ",
-      "CommandLine": "sassymq/smql-to-csharp-rabbitmq -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i ../../../ODXML/DataSchema.odxml"
+      "CommandLine": "sassymq/smql-to-csharp-rabbitmq -i ../../../SassyMQ/Lexicon.smql -i ../../../ODXML/DataSchema.odxml"
     },
     {
       "MatchedTranspiler": {
@@ -286,7 +286,7 @@
       "ProjectTranspilerId": "3c2165b3-d021-4a44-bfa0-feae29cf9512",
       "Name": "XmlXsltTransform",
       "RelativePath": "/DotNet/CLIClassLibrary/RoleHandlers",
-      "CommandLine": "codee42/xml-xslt-transform -i ..\\..\\..\\SassyMQ\\Lexicon.smql -i CreateRoleHandlers.xslt -i ..\\..\\..\\ODXML\\DataSchema.odxml"
+      "CommandLine": "codee42/xml-xslt-transform -i ../../../SassyMQ/Lexicon.smql -i CreateRoleHandlers.xslt -i ../../../ODXML/DataSchema.odxml"
     }
   ]
 }
