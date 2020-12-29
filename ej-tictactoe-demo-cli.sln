@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		cli.js = cli.js
 		SSoT\CLIOptions.csv.xml = SSoT\CLIOptions.csv.xml
+		SSoT\CommandLineArgs.csv = SSoT\CommandLineArgs.csv
 		ODXML\DataSchema.odxml = ODXML\DataSchema.odxml
 		SSoT\EAPIConfig.json = SSoT\EAPIConfig.json
 		SSoT\EAPIConfig.json.xml = SSoT\EAPIConfig.json.xml
 		SassyMQ\Lexicon.smql = SassyMQ\Lexicon.smql
 		package.json = package.json
+		RebuildFromEAPI.ps1 = RebuildFromEAPI.ps1
 		SSoTmeProject.json = SSoTmeProject.json
 	EndProjectSection
 EndProject

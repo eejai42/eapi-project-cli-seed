@@ -7,7 +7,7 @@
   "SaveDisabled": false,
   "SSoTmeProjectId": "45a4ee1b-0c77-40fa-9bfd-44c9d567293d",
   "Name": "ej-tictactoe-demo",
-  "RootPath": "C:/Users/auto1/go/src/github.com/eejai42/effortless-api-cli-seed",
+  "RootPath": "C:\\Users\\auto1\\go\\src\\github.com\\eejai42\\eapi-project-cli-seed",
   "ProjectSettings": [
     {
       "ProjectSettingId": "3df15eff-d25d-4ba9-ae9b-f6c82b7cd612",
@@ -206,7 +206,7 @@
       "ProjectTranspilerId": "347fee67-4f17-4427-b59a-fb0a220155f5",
       "Name": "XmlToPlossumCmdLineOptions",
       "RelativePath": "/DotNet/CLIClassLibrary",
-      "CommandLine": "XmlToPlossumCmdLineOptions -i ../../SSoT/CommandLineArgs.csv.xml -p handlerName=EAPICLIHandler"
+      "CommandLine": "XmlToPlossumCmdLineOptions -i ../../SSoT/CommandLineArgs.csv.xml -p handlerName=EAPICLIHandlerBase"
     },
     {
       "MatchedTranspiler": {

@@ -2,7 +2,7 @@
   "profiles": {
     "EAPICLI": {
       "commandName": "Project",
-      "commandLineArgs": "-help get"
+      "commandLineArgs": "-whoami"
     }
   }
 }

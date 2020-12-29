@@ -7,7 +7,19 @@ namespace EAPICLI
     {
         static void Main(string[] args)
         {
-            EAPICLIHandler.HandleRequest(args);
+            try
+            {
+                EAPICLIHandler.HandleRequest(args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EXCEPTION: ");
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Stacktrace............................");
+                Console.WriteLine(ex.StackTrace);
+            }
         }
     }
 }

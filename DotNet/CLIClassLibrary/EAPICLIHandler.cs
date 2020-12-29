@@ -1,102 +1,39 @@
 using CLIClassLibrary.RoleHandlers;
+using EAPI.CLI.Lib.DataClasses;
 using Newtonsoft.Json;
 using Plossum.CommandLine;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using YP.SassyMQ.Lib.RabbitMQ;
 
 namespace SSoTme.Default.Lib.CLIHandler
 {
 
-    public partial class EAPICLIHandler
+    public partial class EAPICLIHandler : EAPICLIHandlerBase<User>
     {
         public static string C_PROJECT_NAME = "ej-tictactoe-demo";
-        private RoleHandlerBase _roleHandler;
 
         public EAPICLIHandler(string[] args)
+            : base(args)
         {
-            this.amqps = $"amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/{C_PROJECT_NAME}";
-            var list = args.ToList();
-            list.Insert(0, "cli");
-            this.Parser = new CommandLineParser(this);
-            this.Parser.Parse(list.ToArray());
+            
         }
 
-        internal static string GetMostRecentUser()
+        protected override string HandleCustomRequest()
         {
-            var di = new DirectoryInfo(ProjectRootPath);
-            if (!di.Exists) di.Create();
-            var lastModified = di.GetFiles().OrderByDescending(fi => fi.LastWriteTime).FirstOrDefault();
-            if (lastModified is null) return "Guest";
-            else
-            {
-                var lastName = Path.GetFileNameWithoutExtension(lastModified.Name);
-                return lastName;
-            }
+            if (!String.IsNullOrEmpty(this.action)) return this.PerformAction();
+            else throw new Exception($"Sytnax error: cli -action XYZ -bodyData {{...}} -as Admin");
+
         }
 
-        internal static string GetToken(string runas)
-        {
-            var root = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var fileInfo = new FileInfo(Path.Combine(ProjectRootPath, $"{runas}.token"));
-            if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
-            if (!fileInfo.Exists) return String.Empty;
-            else
-            {
-                var accessToken = File.ReadAllText(fileInfo.FullName);
-                File.WriteAllText(fileInfo.FullName, accessToken);
-                return accessToken;
-            }
-        }
-
-        public string ProcessRequest()
-        {
-            this.SetDefaultCLIParameters();
-            if (this.help) return this.ShowHelp(); 
-            else if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
-            else if (!String.IsNullOrEmpty(this.invoke)) return this.Invoke();
-            else throw new Exception($"Sytnax error: cli -invoke <action> -bodyData {{...}} -as Admin");
-        }
-
-        private string ShowHelp()
-        {
-            var sbHelpBuilder = new StringBuilder();
-            var helpTerm = this.Parser.RemainingArguments.FirstOrDefault();
-            if (String.IsNullOrEmpty(helpTerm)) helpTerm = "general";
-            this.RoleHandler.AddHelp(sbHelpBuilder, helpTerm);
-            if (helpTerm == "general")
-            {
-                sbHelpBuilder.AppendLine();
-                sbHelpBuilder.AppendLine();
-                sbHelpBuilder.AppendLine($"Syntax:");
-                sbHelpBuilder.AppendLine(this.Parser.UsageInfo.ToString());
-                sbHelpBuilder.AppendLine();
-                sbHelpBuilder.AppendLine($"Available Roles:");
-                RoleHandlerFactory.ListRoles(sbHelpBuilder);
-            }
-            return sbHelpBuilder.ToString();
-        }
-
-        private void SetDefaultCLIParameters()
-        {
-            var firstArgument = this.Parser.RemainingArguments.FirstOrDefault();
-            if (String.Equals(firstArgument, "help", StringComparison.OrdinalIgnoreCase))
-            {
-                this.help = true;
-                this.Parser.RemainingArguments.RemoveAt(0);
-            }
-
-            else if (String.IsNullOrEmpty(this.invoke) && !String.IsNullOrEmpty(firstArgument))
-            {
-                this.invoke = firstArgument;
-            }
-        }
-
-        private string Invoke()
+        private string PerformAction()
         {
             if (!String.IsNullOrEmpty(this.bodyFile))
             {
@@ -104,61 +41,41 @@ namespace SSoTme.Default.Lib.CLIHandler
                 if (!fileInfo.Exists) throw new Exception($"-bodyFile {fileInfo.FullName} does not exists.");
                 else if (String.IsNullOrEmpty(this.bodyData)) this.bodyData = File.ReadAllText(fileInfo.FullName);
             }
-            var result = this.RoleHandler.Handle(this.invoke, this.bodyData, this.where);
+            var result = this.RoleHandler.Handle(this.action, this.bodyData, this.where);
             if (!String.IsNullOrEmpty(this.output)) File.WriteAllText(this.output, result);
             return result;
         }
 
-        public string Authenticate()
+
+        protected override string GetCustomHelp()
+        {
+            return this.GetStandardHelp();
+        }
+
+        protected override bool CustomReloadCache()
         {
             var smqGuest = new SMQGuest(this.amqps);
-            var authPayload = smqGuest.CreatePayload();
-            authPayload.EmailAddress = this.authenticate;
-            authPayload.DemoPassword = this.demoPassword;
-            var result = "";
-            smqGuest.ValidateTemporaryAccessToken(authPayload, (reply, bdea) =>
-            {
-                if (reply.HasNoErrors(bdea))
-                {
-                    this.SaveAuth(reply.AccessToken);
-                }
-                result = JsonConvert.SerializeObject(reply, Formatting.Indented, new JsonSerializerSettings()
-                {
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-            }).Wait(30000);
-            return result;
+
+            //  - smqGuest.GetProducts();
+
+            // or load other "slow moving" data available globally.
+            return true;
         }
 
-        private void SaveAuth(string accessToken)
+        protected override void CheckDefaultCLIParameters(string firstArgument)
         {
-            var fileInfo = new FileInfo(Path.Combine(ProjectRootPath, $"{this.runas}.token"));
-            if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
-            File.WriteAllText(fileInfo.FullName, accessToken);
-        }
-
-        public CommandLineParser Parser { get; }
-        internal RoleHandlerBase RoleHandler
-        {
-            get
+            if (!this.help &&
+                !this.reloadCache &&
+                !this.whoami &&
+                String.IsNullOrEmpty(this.authenticate) &&
+                String.IsNullOrEmpty(this.action) &&
+                !String.IsNullOrEmpty(firstArgument))
             {
-                if (_roleHandler is null)
+                if (String.IsNullOrEmpty(firstArgument))
                 {
-                    _roleHandler = RoleHandlerFactory.CreateHandler(this.runas, this.amqps);
+                    this.help = true;
                 }
-                return _roleHandler;
             }
-            private set => _roleHandler = value;
-        }
-
-        public static string RootPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); } }
-
-        public static string ProjectRootPath { get { return Path.Combine(RootPath, ".eapi", $"{C_PROJECT_NAME}"); } }
-
-        public static void HandleRequest(string[] args)
-        {
-            var handler = new EAPICLIHandler(args);
-            Console.WriteLine(handler.ProcessRequest());
         }
     }
 }
