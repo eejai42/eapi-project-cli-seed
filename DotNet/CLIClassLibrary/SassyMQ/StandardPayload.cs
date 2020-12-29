@@ -1,3 +1,4 @@
+
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 using System;
@@ -41,7 +42,7 @@ namespace YP.SassyMQ.Lib.RabbitMQ
 
         private SMQActorBase __Actor { get; set; }
         private bool TimedOutWaiting { get; set; }
-        private StandardPayload ReplyPayload { get; set; }
+        internal StandardPayload ReplyPayload { get; set; }
         private BasicDeliverEventArgs ReplyBDEA { get; set; }
         private bool ReplyRecieved { get; set; }
         
