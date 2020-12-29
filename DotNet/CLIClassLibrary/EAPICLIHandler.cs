@@ -28,12 +28,12 @@ namespace SSoTme.Default.Lib.CLIHandler
 
         protected override string HandleCustomRequest()
         {
-            if (!String.IsNullOrEmpty(this.action)) return this.PerformAction();
+            if (!String.IsNullOrEmpty(this.action)) return this.HandleAction();
             else throw new Exception($"Sytnax error: cli -action XYZ -bodyData {{...}} -as Admin");
 
         }
 
-        private string PerformAction()
+        protected override string HandleAction()
         {
             if (!String.IsNullOrEmpty(this.bodyFile))
             {

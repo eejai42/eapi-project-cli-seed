@@ -58,9 +58,12 @@ namespace SSoTme.Default.Lib.CLIHandler
             if (this.help) return this.ShowHelp();
             else if (this.reloadCache) return this.ReloadCacheNow();
             else if (this.whoami) return this.CheckWhoIAmNow();
+            else if (!String.IsNullOrEmpty(this.action)) return this.HandleAction();
             else if (!String.IsNullOrEmpty(this.authenticate)) return this.Authenticate();
             else return this.HandleCustomRequest();
         }
+
+        protected abstract string HandleAction();
 
         protected abstract string HandleCustomRequest();
 
