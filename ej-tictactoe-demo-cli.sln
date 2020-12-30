@@ -17,7 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SSoT\EAPIConfig.json.xml = SSoT\EAPIConfig.json.xml
 		SassyMQ\Lexicon.smql = SassyMQ\Lexicon.smql
 		package.json = package.json
+		README.md = README.md
 		RebuildFromEAPI.ps1 = RebuildFromEAPI.ps1
+		SSoTmeProject.json = SSoTmeProject.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1st Files to Update", "1st Files to Update", "{673A68ED-F6D9-4308-ABD2-4A09C2112FD6}"
+	ProjectSection(SolutionItems) = preProject
+		DotNet\CLIClassLibrary\EAPICLIHandler.cs = DotNet\CLIClassLibrary\EAPICLIHandler.cs
+		package.json = package.json
 		SSoTmeProject.json = SSoTmeProject.json
 	EndProjectSection
 EndProject

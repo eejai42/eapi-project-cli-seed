@@ -1,4 +1,4 @@
-# Effortlless API Project CLI
+# Effortless API Project CLI
 
 This seed will create a fully functional, secure implementation with access to your
 EffortlessAPI endpoint for easy automation on the scripting platform of your choice.

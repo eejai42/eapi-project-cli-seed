@@ -75,6 +75,10 @@ namespace SSoTme.Default.Lib.CLIHandler
                 {
                     this.help = true;
                 }
+                else
+                {
+                    this.action = firstArgument;
+                }
             }
         }
     }
