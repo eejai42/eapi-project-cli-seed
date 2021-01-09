@@ -41,10 +41,10 @@ namespace CLIClassLibrary.RoleHandlers
         {
         }
 
-        public override string Handle(string invoke, string data, string where)
+        public override string Handle(string invoke, string data, string where, int maxPages, string view)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
-            string result = HandlerFactory(invoke, data, where);
+            string result = HandlerFactory(invoke, data, where, maxPages, view);
             return result;
         }
     }
@@ -101,13 +101,15 @@ namespace CLIClassLibrary.RoleHandlers
             }
         }
 
-        private string HandlerFactory(string invokeRequest, string payloadString, string where)
+        private string HandlerFactory(string invokeRequest, string payloadString, string where, int maxPages, string view)
         {
             var result = "";
             var payload = JsonConvert.DeserializeObject&lt;StandardPayload>(payloadString);
             payload.SetActor(this.SMQActor);
             payload.AccessToken = this.SMQActor.AccessToken;
             payload.AirtableWhere = where;
+            payload.MaxPages = maxPages;
+            payload.View = view;
 
             switch (invokeRequest.ToLower())
             {<xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">

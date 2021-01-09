@@ -9,7 +9,7 @@ namespace CLIClassLibrary.RoleHandlers
 {
     public abstract class RoleHandlerBase
     {
-        public abstract string Handle(string invoke, string data, string where);
+        public abstract string Handle(string invoke, string data, string where, int maxPages, string view);
 
         protected string SerializePayload(StandardPayload reply)
         {

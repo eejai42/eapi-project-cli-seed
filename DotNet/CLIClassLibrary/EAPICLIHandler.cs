@@ -41,7 +41,7 @@ namespace SSoTme.Default.Lib.CLIHandler
                 if (!fileInfo.Exists) throw new Exception($"-bodyFile {fileInfo.FullName} does not exists.");
                 else if (String.IsNullOrEmpty(this.bodyData)) this.bodyData = File.ReadAllText(fileInfo.FullName);
             }
-            var result = this.RoleHandler.Handle(this.action, this.bodyData, this.where);
+            var result = this.RoleHandler.Handle(this.action, this.bodyData, this.where, this.maxpages, this.view);
             if (!String.IsNullOrEmpty(this.output)) File.WriteAllText(this.output, result);
             return result;
         }

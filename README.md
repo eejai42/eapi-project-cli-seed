@@ -3,7 +3,10 @@
 This seed will create a fully functional, secure implementation with access to your
 EffortlessAPI endpoint for easy automation on the scripting platform of your choice.
 
-## Installation
+## Installation with the EffortlessAPI CLI `npm install -g eejai42/eapi-cli`
+> eapi -cloneEAPISeed project-cli ProjectXYCli your-project-alias
+
+## Manual Installation
 Creating a CLI for your project involves the following steps:
 1. Clone this repository to a folder called `/your-cli` (assuming your EffortlessAPI Project is called `bob-your-project` for example.)
 2. Update `/SSoTmeProject.json` to replace `ej-tictactoe-demo` with `bob-your-project`
