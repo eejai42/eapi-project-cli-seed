@@ -2,7 +2,7 @@
   "profiles": {
     "EAPICLI": {
       "commandName": "Project",
-      "commandLineArgs": "-whoami"
+      "commandLineArgs": "getavailabilities -as admin -maxpages 3 -view test"
     }
   }
 }

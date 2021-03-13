@@ -38,13 +38,14 @@ namespace CLIClassLibrary.RoleHandlers
 
         public <xsl:value-of select="Name"/>CLIHandler(string amqps, string accessToken)
             : base(amqps, accessToken)
-        {
+        {<xsl:if test="normalize-space(Name) != 'Guest'">
+            this.GetEffortlessAPIProjectsHandler = this.SMQActor.GetEffortlessAPIProjects;</xsl:if>
         }
 
-        public override string Handle(string invoke, string data, string where, int maxPages, string view)
+        public override string Handle(string invoke, string data, string where, Int32 maxPages)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
-            string result = HandlerFactory(invoke, data, where, maxPages, view);
+            string result = HandlerFactory(invoke, data, where, maxPages);
             return result;
         }
     }
@@ -101,7 +102,7 @@ namespace CLIClassLibrary.RoleHandlers
             }
         }
 
-        private string HandlerFactory(string invokeRequest, string payloadString, string where, int maxPages, string view)
+        private string HandlerFactory(string invokeRequest, string payloadString, string where, Int32 maxPages)
         {
             var result = "";
             var payload = JsonConvert.DeserializeObject&lt;StandardPayload>(payloadString);
@@ -109,7 +110,6 @@ namespace CLIClassLibrary.RoleHandlers
             payload.AccessToken = this.SMQActor.AccessToken;
             payload.AirtableWhere = where;
             payload.MaxPages = maxPages;
-            payload.View = view;
 
             switch (invokeRequest.ToLower())
             {<xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">
