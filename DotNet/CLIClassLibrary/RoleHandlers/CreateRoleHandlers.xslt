@@ -30,6 +30,7 @@
 using EAPI.CLI.Lib.DataClasses;
 using YP.SassyMQ.Lib.RabbitMQ;
 using System.Text;
+using System;
 
 namespace CLIClassLibrary.RoleHandlers
 {
@@ -38,11 +39,10 @@ namespace CLIClassLibrary.RoleHandlers
 
         public <xsl:value-of select="Name"/>CLIHandler(string amqps, string accessToken)
             : base(amqps, accessToken)
-        {<xsl:if test="normalize-space(Name) != 'Guest'">
-            this.GetEffortlessAPIProjectsHandler = this.SMQActor.GetEffortlessAPIProjects;</xsl:if>
+        {
         }
 
-        public override string Handle(string invoke, string data, string where, Int32 maxPages)
+        public override string Handle(string invoke, string data, string where, Int32 maxPages, String view)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
             string result = HandlerFactory(invoke, data, where, maxPages);
