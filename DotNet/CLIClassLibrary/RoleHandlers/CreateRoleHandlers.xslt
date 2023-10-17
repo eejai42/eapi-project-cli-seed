@@ -30,7 +30,6 @@
 using EAPI.CLI.Lib.DataClasses;
 using YP.SassyMQ.Lib.RabbitMQ;
 using System.Text;
-using System;
 
 namespace CLIClassLibrary.RoleHandlers
 {
@@ -42,10 +41,10 @@ namespace CLIClassLibrary.RoleHandlers
         {
         }
 
-        public override string Handle(string invoke, string data, string where, Int32 maxPages, String view)
+        public override string Handle(string invoke, string data, string where, int maxPages, string view)
         {
             if (string.IsNullOrEmpty(data)) data = "{}";
-            string result = HandlerFactory(invoke, data, where, maxPages);
+            string result = HandlerFactory(invoke, data, where, maxPages, view);
             return result;
         }
     }
@@ -102,7 +101,7 @@ namespace CLIClassLibrary.RoleHandlers
             }
         }
 
-        private string HandlerFactory(string invokeRequest, string payloadString, string where, Int32 maxPages)
+        private string HandlerFactory(string invokeRequest, string payloadString, string where, int maxPages, string view)
         {
             var result = "";
             var payload = JsonConvert.DeserializeObject&lt;StandardPayload>(payloadString);
@@ -110,6 +109,7 @@ namespace CLIClassLibrary.RoleHandlers
             payload.AccessToken = this.SMQActor.AccessToken;
             payload.AirtableWhere = where;
             payload.MaxPages = maxPages;
+            payload.View = view;
 
             switch (invokeRequest.ToLower())
             {<xsl:for-each select="$smq//SMQMessages/SMQMessage[ActorFrom = $role-name]">
