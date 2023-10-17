@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
 >
-    <xsl:variable name="smq" select="document('Lexicon.smql')" />
+    <xsl:variable name="smq" select="document('SassyMQLexicon.smql')" />
     <xsl:output method="xml" indent="yes"/>
     <xsl:variable name="odxml" select="document('DataSchema.odxml')" />
 
