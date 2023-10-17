@@ -1,0 +1,122 @@
+{
+  "ShowHidden": false,
+  "ShowAllFiles": false,
+  "SaveDisabled": false,
+  "SSoTmeProjectId": "45a4ee1b-0c77-40fa-9bfd-44c9d567293d",
+  "Name": "ej-tictactoe-demo",
+  "ProjectSettings": [
+    {
+      "ProjectSettingId": "3df15eff-d25d-4ba9-ae9b-f6c82b7cd612",
+      "Name": "project-name",
+      "Value": "ej-tictactoe-demo"
+    },
+    {
+      "ProjectSettingId": "5e421284-8add-480d-bec1-8e84c1720b26",
+      "Name": "make-fks-collections",
+      "Value": "true"
+    },
+    {
+      "ProjectSettingId": "be38f7bb-d637-4d90-b8dc-09069d98509c",
+      "Name": "serialize-to-original-names",
+      "Value": "true"
+    },
+    {
+      "ProjectSettingId": "a812c16f-974d-4aae-a0d3-68ea4cc0634b",
+      "Name": "list-suffix",
+      "Value": "Expanded"
+    },
+    {
+      "ProjectSettingId": "40484594-d24a-4e96-8551-f72c99caea63",
+      "Name": "include-load-methods",
+      "Value": "false"
+    },
+    {
+      "ProjectSettingId": "71f01193-aad4-409b-8e17-b90bb99bddf1",
+      "Name": "init-lists",
+      "Value": "false"
+    },
+    {
+      "ProjectSettingId": "928dbe3b-5324-4dea-832c-c7aa8044ae48",
+      "Name": "legacy",
+      "Value": "false"
+    },
+    {
+      "ProjectSettingId": "928dbe3b-5324-4dea-832c-c7aa8044ae48",
+      "Name": "dataclasses-namespace",
+      "Value": "EAPI.CLI.Lib.DataClasses"
+    },
+    {
+      "ProjectSettingId": "085c785c-4f25-498b-9b1f-0e80a4f41f84",
+      "Name": "amqps",
+      "Value": "amqps://smqPublic:smqPublic@effortlessapi-rmq.ssot.me/ej-tictactoe-demo"
+    }
+  ],
+  "ProjectTranspilers": [
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "ddeef526-5399-4be1-a676-8c64961e549d",
+        "Name": "SSoT",
+        "Description": "SSoT"
+      },
+      "ProjectTranspilerId": "9eb9d24c-b568-4469-a1c1-6e3c36cf1eeb",
+      "Name": "SSoT",
+      "RelativePath": "",
+      "CommandLine": "effortless/ssot -p ssot-key=6H555uEpD16TX3"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "595b7fe7-7f64-44c2-b48c-d096d997211f",
+        "Name": "OdxmlToCSharpPOCOs",
+        "Description": "Odxml To CSharp POCOs"
+      },
+      "ProjectTranspilerId": "822b8b8b-d293-484a-9531-3c2b128599e1",
+      "Name": "OdxmlToCSharpPOCOs",
+      "RelativePath": "/DotNet/CLIClassLibrary/DataClasses",
+      "CommandLine": "odxml42/odxml-to-csharp-pocos -i ../../../ODXML/DataSchema.odxml -p airtable=true  -p include-collections=false"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "6dffda43-46a9-482a-9eca-c9061ab22fef",
+        "Name": "CsvToXml",
+        "Description": "Converts a CSV File into an XML File where the names of the elemnts are derived from the column names"
+      },
+      "ProjectTranspilerId": "c052ae27-7c0b-454d-aa58-2fdd8b726ea0",
+      "Name": "CsvToXml",
+      "RelativePath": "/SSoT",
+      "CommandLine": "codee42/csv-to-xml -i ./CommandLineArgs.csv"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "9e973baf-62e7-4196-8aba-30b4d91cca46",
+        "Name": "XmlToPlossumCmdLineOptions",
+        "Description": "Xml To Plossum Cmd Line Options"
+      },
+      "ProjectTranspilerId": "347fee67-4f17-4427-b59a-fb0a220155f5",
+      "Name": "XmlToPlossumCmdLineOptions",
+      "RelativePath": "/DotNet/CLIClassLibrary",
+      "CommandLine": "XmlToPlossumCmdLineOptions -i ../../SSoT/CommandLineArgs.csv.xml -p handlerName=EAPICLIHandlerBase"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "cf9074b7-4448-474a-adb6-cfffc0911e6c",
+        "Name": "SmqlToCSharpRabbitMQ",
+        "Description": "Smql To CSharp RabbitMQ"
+      },
+      "ProjectTranspilerId": "8ba02eba-6bc6-49e2-9c2a-afb7dcfa56b2",
+      "Name": "SmqlToCSharpRabbitMQ",
+      "RelativePath": "/DotNet/CLIClassLibrary/SassyMQ",
+      "CommandLine": "sassymq/smql-to-csharp-rabbitmq -i ../../../SMQL/SassyMQLexicon.smql -i ../../../ODXML/DataSchema.odxml"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "4b713f03-1d9f-42f2-b02f-e3cdbd237bb3",
+        "Name": "XmlXsltTransform",
+        "Description": "Given an Xml and Xslt file, will process and \"split\" a resulting fileset."
+      },
+      "ProjectTranspilerId": "3c2165b3-d021-4a44-bfa0-feae29cf9512",
+      "Name": "XmlXsltTransform",
+      "RelativePath": "/DotNet/CLIClassLibrary/RoleHandlers",
+      "CommandLine": "codee42/xml-xslt-transform -i ../../../SMQL/SassyMQLexicon.smql -i CreateRoleHandlers.xslt -i ../../../ODXML/DataSchema.odxml"
+    }
+  ]
+}
